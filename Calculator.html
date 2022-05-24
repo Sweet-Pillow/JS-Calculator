@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>2-b</title>
+    <style>
+        .exibir {
+            width: 200px;
+            height: 50px;
+            border: 2px solid black;
+            border-radius: 3px;
+            border-style: inset;
+            background-color: #F2D1C9;
+        }
+
+        .calc {
+            border: 2px solid black;
+            background-color: #D9AB9A;
+        }
+
+        body {
+            color: #10260A;
+        }
+
+        button {
+            background-color: #D95448;
+            border: none;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        button:active {
+            background-color: #d954484d;
+        }
+    </style>
+</head>
+
+<body class="d-flex justify-content-center">
+    <div class="calc d-flex flex-column">
+        <h1 class="d-flex justify-content-center">Calculadora</h1>
+
+        <div class="exibir d-flex justify-content-end align-items-center overflow-auto m-2 fs-4"></div>
+
+        <div class="teclado container fs-3 m-2">
+            <div class="row">
+                <div class="col m-2">
+                    <button class="p-2" onclick="addNum(7)">7</button>
+                    <button class="p-2" onclick="addNum(8)">8</button>
+                    <button class="p-2" onclick="addNum(9)">9</button>
+                    <button class="p-2" onclick="addNum('/')">/</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col m-2">
+                    <button class="p-2" onclick="addNum(4)">4</button>
+                    <button class="p-2" onclick="addNum(5)">5</button>
+                    <button class="p-2" onclick="addNum(6)">6</button>
+                    <button class="p-2" onclick="addNum('*')">*</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col m-2">
+                    <button class="p-2" onclick="addNum(1)">1</button>
+                    <button class="p-2" onclick="addNum(2)">2</button>
+                    <button class="p-2" onclick="addNum(3)">3</button>
+                    <button class="p-2" onclick="addNum('-')">-</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col m-2">
+                    <button class="p-2" onclick="addNum(0)">0</button>
+                    <button class="p-2" onclick="calc()">=</button>
+                    <button class="p-2" onclick="reset()">C</button>
+                    <button class="p-2" onclick="addNum('+')">+</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let element = document.querySelector('.exibir')
+        let result = false
+
+        function reset() {
+            element.innerHTML = ''
+        }
+
+        function addNum(num) {
+            if (result == true) {
+                reset()
+                result = false
+            }
+            element.innerHTML += `${num}`
+        }
+
+        function calc() {
+            try{
+                element.innerHTML = ` = ${Function("return " + element.innerHTML)()}`
+            } catch(SyntaxError){
+                element.innerHTML = ` Expressão inválida`
+            } 
+            result = true
+        }
+
+    </script>
+</body>
+
+</html>
