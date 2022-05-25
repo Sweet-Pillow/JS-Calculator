@@ -1,0 +1,27 @@
+.exibir {
+    width: 200px;
+    height: 50px;
+    border: 2px solid black;
+    border-radius: 3px;
+    border-style: inset;
+    background-color: #F2D1C9;
+}
+
+.calc {
+    border: 2px solid black;
+    background-color: #D9AB9A;
+}
+
+body {
+    color: #10260A;
+}
+
+button {
+    background-color: #D95448;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+button:active {
+    background-color: #d954484d;
+}
